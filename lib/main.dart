@@ -6,9 +6,16 @@ void main() {
   ));
 }
 
-
-class NinjaApp extends StatelessWidget {
+class NinjaApp extends StatefulWidget {
   const NinjaApp({Key? key}) : super(key: key);
+
+  @override
+  State<NinjaApp> createState() => _NinjaAppState();
+}
+
+class _NinjaAppState extends State<NinjaApp> {
+
+  int level = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +26,17 @@ class NinjaApp extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            level += 1;
+          });
+        },
+        child: Icon(
+          Icons.add
+        ),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -40,7 +58,7 @@ class NinjaApp extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              "Han-Go Yang",
+              "Michelle Lee",
               style: TextStyle(
                 color: Colors.purpleAccent,
                 fontSize: 28.0,
@@ -58,7 +76,7 @@ class NinjaApp extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              "Intermediate",
+              "$level",
               style: TextStyle(
                 color: Colors.purpleAccent,
                 fontSize: 28.0,
